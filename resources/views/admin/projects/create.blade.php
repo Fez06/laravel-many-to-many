@@ -33,6 +33,13 @@
             <option value="{{ $type->id }}" {{ old('type_id')== $type->id ? 'selected' : ''}}>{{ $type->name }}</option>
         @endforeach
     </select>
+
+    @foreach ($technologies as $technology)
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="technologies" value="{{ $technology->id }}" name="technologies[]" {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
+            <label class="form-check-label" for="technologies">{{ $technology->name }}</label>
+        </div>
+    @endforeach
     <br>
     <input type="submit" class='form-control' value="Aggiungi Progetto!">
 </form>
