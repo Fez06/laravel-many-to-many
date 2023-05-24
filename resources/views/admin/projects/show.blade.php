@@ -7,7 +7,7 @@
 <h5>Type of project: {{ $project->type?->name}}</h5>
 
 <p>
-    {{$project->technology?->name}}
+    {{$project?->technology?->name}}
 </p>
 
 <p>

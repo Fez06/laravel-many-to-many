@@ -61,10 +61,16 @@ class ProjectController extends Controller
         
         $newproject->save();
 
+        // if(isset($data['type'])){
+        //     $newproject->technologies()->sync($data['technologies']);
+        // }
+
         if(isset($data['technologies'])){
             $newproject->technologies()->sync($data['technologies']);
         }
-
+        //dd($newproject);
+        //dd($data['technologies']);
+        //dd($request->all());
         return redirect()->route('admin.projects.index');
         
     }
