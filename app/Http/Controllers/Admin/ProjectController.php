@@ -69,7 +69,7 @@ class ProjectController extends Controller
             $newproject->technologies()->sync($data['technologies']);
         }
         //dd($newproject);
-        //dd($data['technologies']);
+        //dd($data);
         //dd($request->all());
         return redirect()->route('admin.projects.index');
         
