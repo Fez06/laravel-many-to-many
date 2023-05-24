@@ -7,13 +7,13 @@
 
 <ul class="list-unstyled d-flex m-0 gap-1 justify-content">
     <li>
-        <h2><a href="{{ route('admin.types.show', $types) }}" class="btn btn-sm btn-primary">{{$type->title}}</a></h2>
+        <h2><a href="{{ route('admin.types.show', $type->id) }}" class="btn btn-sm btn-primary">{{$type->name}}</a></h2>
     </li>
+    {{-- <li>
+        <a href="{{ route('admin.types.edit', $type) }}"><button type="button" class="btn btn-sm btn-warning">Modifica</button></a>
+    </li> --}}
     <li>
-        <a href="{{ route('admin.types.edit', $types) }}"><button type="button" class="btn btn-sm btn-warning">Modifica</button></a>
-    </li>
-    <li>
-        <form action="{{ route('admin.types.destroy', $types->id) }}"
+        <form action="{{ route('admin.types.destroy', $type->id) }}"
             method="POST">
             @csrf
             @method('DELETE')

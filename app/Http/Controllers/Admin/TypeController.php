@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Type;
 use App\Http\Requests\StoreTypeRequest;
 use App\Http\Requests\UpdateTypeRequest;
+use App\Models\Project;
+use App\Models\Technology;
+use Illuminate\Support\Str;
 
 class TypeController extends Controller
 {
@@ -17,6 +20,7 @@ class TypeController extends Controller
     public function index()
     {
         $types = Type::all();
+
         return view('admin.types.index', compact('types'));
     }
 
@@ -27,7 +31,11 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        
+        $types = Type::all();
+        $technologies = Technology::all();
+
+        return view('admin.types.create', compact('types', 'technologies'));
     }
 
     /**
@@ -38,7 +46,16 @@ class TypeController extends Controller
      */
     public function store(StoreTypeRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $newtype = new Type();
+
+        $newtype->name = $data['name'];
+        $newtype->slug = Str::slug($newtype->name, '-');
+
+        $newtype->save();
+
+        return redirect()->route('admin.types.index');
     }
 
     /**
@@ -49,7 +66,7 @@ class TypeController extends Controller
      */
     public function show(Type $type)
     {
-        //
+        return view('admin.types.show', compact('type'));
     }
 
     /**
@@ -60,7 +77,11 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        $project = Project::all();
+        $technologies = Technology::all();
+
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
+    
     }
 
     /**

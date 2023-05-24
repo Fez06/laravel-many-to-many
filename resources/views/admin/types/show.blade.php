@@ -2,15 +2,11 @@
 
 @section('content')
 
-<h1>{{$project->title}}</h1>
 
-<h5>Type of project: {{ $project->type?->name}}</h5>
+<h5>Type of project: {{ $type->name}}</h5>
 
 <p>
-    {{$project->description}}
+    {{$type->slug}}
 </p>
 
-<div>
-    <img src="{{ asset('storage/' . $project->image)}}" alt="project image">
-</div>
 @endsection

@@ -12,27 +12,14 @@
     </div>
 @endif
 
-<h1>Crea un nuovo progetto!</h1>
+<h1>Crea un nuovo tipo !</h1>
 
-<form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('admin.types.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
-    <label for="title">Title</label>
-    <input type="text" class='form-control' name="title" id="title" value="{{ old('title') }}">
+    <label for="name">Name:</label>
+    <input type="text" class='form-control' name="name" id="name" value="{{ old('name') }}">
 
-    <label for="description">Description:</label>
-    <input type="text" class='form-control' name="description" id="description" value="{{ old('description') }}">
-
-    <label for="image">Inserisci un'immagine:</label>
-    <input type="file" class='form-control' name="image" id="image">
-
-    <label for="type_id" class="form-label">Type</label>
-    <select class="form-select" name="type_id" id="type_id">
-        <option value="">Select type:</option>
-        @foreach ($types as $type)
-            <option value="{{ $type->id }}" {{ old('type_id')== $type->id ? 'selected' : ''}}>{{ $type->name }}</option>
-        @endforeach
-    </select>
     <br>
     <input type="submit" class='form-control' value="Aggiungi Progetto!">
 </form>
